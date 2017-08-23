@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/christopher/christopher working scene.unity
+- path: Assets/Scenes/Hanih/Hanih's scene.unity
   isLoaded: 1
   isActive: 1
