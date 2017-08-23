@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5e244559d3d00c24ba9d360dc8b3695e
+timeCreated: 1473828222
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - mouseEnterImage: {instanceID: 0}
+  - mouseExitImage: {instanceID: 0}
+  - mouseDownImage: {instanceID: 0}
+  - ButtonClick: {fileID: 8300000, guid: 7c04538eb24e8544dad30f61090c9eb1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
