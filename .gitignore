@@ -34,3 +34,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 lighter than air (1)/Library/
+*.dwlt
+*.txt
