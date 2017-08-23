@@ -20,7 +20,8 @@ public class PetController : MonoBehaviour
     bool m_isGrounded;
     float m_groundDistance = 0.2f;
     Vector3 groundNormal = new Vector3(0,1,0);
-    public float curSpeed;
+    private float curSpeedX;
+    private float curSpeedZ;
 
     void Start()
     {
@@ -57,22 +58,38 @@ public class PetController : MonoBehaviour
     void HandleGroundMovement()
     {
         CharacterController controller = GetComponent<CharacterController>();
+        
         // Moves the player forward
         Vector3 forward = transform.TransformDirection(Vector3.forward);
-        curSpeed = speed * Input.GetAxis("Vertical") ;
-        if (curSpeed < 0.0f)
+        curSpeedX = speed * Input.GetAxis("Vertical");
+        curSpeedZ = speed * Input.GetAxis("Horizontal");
+        
+
+        if (curSpeedX < 0.0f)
         {
-            forward = transform.TransformDirection(Vector3.back);
-            controller.SimpleMove(forward * curSpeed);
-            m_Anim.SetFloat("Speed", -curSpeed);
+            controller.SimpleMove(forward * -curSpeedX);
+            m_Anim.SetFloat("Speed", controller.velocity.magnitude);
         }
-        else
-        {
-            controller.SimpleMove(forward * curSpeed);
-            m_Anim.SetFloat("Speed", curSpeed);
+        else if(curSpeedX > 0.0f)
+        { 
+            controller.SimpleMove(forward * curSpeedX);
+            m_Anim.SetFloat("Speed", controller.velocity.magnitude);
+           
         }
 
 
+        if(curSpeedZ < 0.0f)
+        {
+            controller.SimpleMove(forward * -curSpeedZ);
+            m_Anim.SetFloat("Speed", controller.velocity.magnitude);
+        }
+        else if(curSpeedZ > 0.0f)
+        {
+            controller.SimpleMove(forward * curSpeedZ);
+            m_Anim.SetFloat("Speed", controller.velocity.magnitude);
+        }
+
+        m_Anim.SetFloat("Speed", controller.velocity.magnitude > 0.1f ? controller.velocity.magnitude : 0.0f);
     }
 
     void GroundCheckStatus()
